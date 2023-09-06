@@ -1,8 +1,7 @@
 import { createCharacterCard } from "./components/card/card.js";
 
-import { createSearchBar } from './components/search-bar/search-bar.js'
+import { createSearchBar } from "./components/search-bar/search-bar.js";
 import { CreateButton } from "./components/nav-button/nav-button.js";
-
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
@@ -19,16 +18,12 @@ let maxPage = 1;
 let page = 1;
 let searchQuery = "";
 
-
-searchBarContainer.append(createSearchBar(searchChar))
-
-
+searchBarContainer.append(createSearchBar(searchChar));
 
 const prevButton = CreateButton("previous");
 const nextButton = CreateButton("next");
 navigation.append(prevButton);
 navigation.append(nextButton);
-
 
 function searchChar(event) {
   event.preventDefault();
@@ -50,17 +45,22 @@ async function fetchCharacters() {
       console.log("DATA ", data);
 
       maxPage = data.info.pages;
-      if (page === maxPage) {
-        nextButton.disabled = true;
-      } else {
-        nextButton.disabled = false;
-      }
+      // if (page === maxPage) {
+      //   nextButton.disabled = true;
+      // } else {
+      //   nextButton.disabled = false;
+      // }
 
-      if (page === 1) {
-        prevButton.disabled = true;
-      } else {
-        prevButton.disabled = false;
-      }
+      page === maxPage
+        ? (nextButton.disabled = true)
+        : (nextButton.disabled = false);
+
+      // if (page === 1) {
+      //   prevButton.disabled = true;
+      // } else {
+      //   prevButton.disabled = false;
+      // }
+      page === 1 ? (prevButton.disabled = true) : (prevButton.disabled = false);
 
       pagination.innerHTML = page + "/" + maxPage;
 
