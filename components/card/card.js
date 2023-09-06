@@ -32,10 +32,8 @@
 // }
 
 export function createCharacterCard(props) {
-  const { image, name, status, type, occurrences } = props;
+  const { image, name, status, type, episode } = props;
 
-  console.log("PROPS ", props);
-  console.log("occurrences ", props.occurrences);
   const listItem = document.createElement("li");
   listItem.classList.add("card");
   listItem.innerHTML += `
@@ -54,8 +52,7 @@ export function createCharacterCard(props) {
     <dd class="card__info-description">Alive</dd>
     <dt class="card__info-title">${type}</dt>
     <dd class="card__info-description"></dd>
-    <dt class="card__info-title">${occurrences}</dt>
-    <dd class="card__info-description">51</dd>
+    <dt class="card__info-title">${episode.length}</dt>
   </dl>
 </div>
     `;
