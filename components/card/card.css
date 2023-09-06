@@ -1,5 +1,7 @@
 .card-container {
   margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: auto 1fr;
 }
 .card {
   width: 300px;
