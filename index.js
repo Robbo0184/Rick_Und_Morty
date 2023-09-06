@@ -42,24 +42,13 @@ async function fetchCharacters() {
 
     if (response.ok) {
       const data = await response.json();
-      console.log("DATA ", data);
 
       maxPage = data.info.pages;
-      // if (page === maxPage) {
-      //   nextButton.disabled = true;
-      // } else {
-      //   nextButton.disabled = false;
-      // }
 
       page === maxPage
         ? (nextButton.disabled = true)
         : (nextButton.disabled = false);
 
-      // if (page === 1) {
-      //   prevButton.disabled = true;
-      // } else {
-      //   prevButton.disabled = false;
-      // }
       page === 1 ? (prevButton.disabled = true) : (prevButton.disabled = false);
 
       pagination.innerHTML = page + "/" + maxPage;
@@ -89,6 +78,5 @@ prevButton.addEventListener("click", () => {
 nextButton.addEventListener("click", () => {
   cardContainer.innerHTML = "";
   page++;
-
   fetchCharacters();
 });
