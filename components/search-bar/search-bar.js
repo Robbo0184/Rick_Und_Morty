@@ -1,9 +1,9 @@
-export function createSearchBar() {
+export function createSearchBar(onSubmit) {
 
-    
+
     const searchBarContainer = document.querySelector(
         '[data-js="search-bar-container"]'
-      );
+    );
 
     const form = document.createElement('form');
     form.classList.add('search-bar');
@@ -27,6 +27,8 @@ export function createSearchBar() {
     searchBarButton.append(image)
     form.append(input)
     form.append(searchBarButton)
+
+    form.addEventListener("submit", onSubmit)
 
     return form
 

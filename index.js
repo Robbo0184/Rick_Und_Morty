@@ -20,7 +20,7 @@ let page = 1;
 let searchQuery = "";
 
 
-let searchBar = createSearchBar()
+searchBarContainer.append(createSearchBar(searchChar))
 
 
 
@@ -30,12 +30,14 @@ navigation.append(prevButton);
 navigation.append(nextButton);
 
 
-searchBar.addEventListener("submit", (e) => {
-  e.preventDefault();
-  searchQuery = e.target.elements.query.value;
+function searchChar(event) {
+  event.preventDefault();
+  searchQuery = event.target.elements.query.value;
+  console.log(searchQuery);
+
   cardContainer.innerHTML = "";
   fetchCharacters();
-});
+}
 
 async function fetchCharacters() {
   try {
