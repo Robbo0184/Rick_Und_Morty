@@ -15,17 +15,12 @@ let maxPage;
 let page = 1;
 let searchQuery = "";
 
-
-
-
-searchBar.addEventListener('submit', (e) => {
+searchBar.addEventListener("submit", (e) => {
   e.preventDefault();
-  searchQuery = e.target.elements.query.value
-  cardContainer.innerHTML = ""
-  fetchCharacters()
-
-
-})
+  searchQuery = e.target.elements.query.value;
+  cardContainer.innerHTML = "";
+  fetchCharacters();
+});
 
 async function fetchCharacters() {
   try {
@@ -39,10 +34,21 @@ async function fetchCharacters() {
       console.log("DATA ", data);
 
       maxPage = data.info.pages;
+      if (page === maxPage) {
+        nextButton.disabled = true;
+      } else {
+        nextButton.disabled = false;
+      }
+
+      if (page === 1) {
+        prevButton.disabled = true;
+      } else {
+        prevButton.disabled = false;
+      }
+
       pagination.innerHTML = page + "/" + maxPage;
 
       data.results.forEach((element) => {
-        
         const card = createCharacterCard(element);
         cardContainer.append(card);
       });
@@ -59,19 +65,18 @@ async function fetchCharacters() {
 await fetchCharacters();
 
 prevButton.addEventListener("click", () => {
-  console.log("prevButton: page before ", page);
-  
+
+  cardContainer.innerHTML = "";
+
   page--;
-  cardContainer.innerHTML = ""
-  console.log("prevButton: page after ", page);
+
   fetchCharacters();
 });
 
 nextButton.addEventListener("click", () => {
-  console.log("nextButton: page before ", page);
-  
+
+  cardContainer.innerHTML = "";
   page++;
-  cardContainer.innerHTML = ""
-  console.log("nextButton: page after ", page);
-  fetchCharacters();
+
+ fetchCharacters();
 });
