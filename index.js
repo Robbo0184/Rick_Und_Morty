@@ -24,6 +24,7 @@ searchBar.addEventListener("submit", (e) => {
 
 async function fetchCharacters() {
   try {
+    
     const response = await fetch(
       `https://rickandmortyapi.com/api/character/?page=${page}&name=${searchQuery}`
     );
@@ -64,14 +65,18 @@ async function fetchCharacters() {
 await fetchCharacters();
 
 prevButton.addEventListener("click", () => {
+
   cardContainer.innerHTML = "";
 
   page--;
+
   fetchCharacters();
 });
 
 nextButton.addEventListener("click", () => {
+
   cardContainer.innerHTML = "";
   page++;
-  fetchCharacters();
+
+ fetchCharacters();
 });
