@@ -32,14 +32,17 @@
 // }
 
 export function createCharacterCard(props) {
-  const { imgSrc, name, status, type, occurrences } = props;
+  const { image, name, status, type, occurrences } = props;
+
+  console.log("PROPS ", props);
+  console.log("occurrences ", props.occurrences);
   const listItem = document.createElement("li");
   listItem.classList.add("card");
   listItem.innerHTML += `
 <div class="card__image-container">
   <img
     class="card__image"
-    src=${imgSrc}
+    src=${image}
     alt="alt text"
   />
   <div class="card__image-gradient"></div>
