@@ -1,4 +1,6 @@
 
+import { createCharacterCard } from "./components/card/card.js";
+
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
@@ -14,6 +16,7 @@ const pagination = document.querySelector('[data-js="pagination"]');
 const maxPage = 1;
 const page = 1;
 const searchQuery = "";
+
 
 async function fetchCharacters() {
   try {
@@ -32,3 +35,12 @@ async function fetchCharacters() {
 }
 
 fetchCharacters()
+
+const card = createCharacterCard({
+  imgSrc: "https://rickandmortyapi.com/api/character/avatar/95.jpeg",
+  name: "test",
+  status: "alive",
+  type: "type",
+  occurrences: "45",
+});
+cardContainer.append(card);
