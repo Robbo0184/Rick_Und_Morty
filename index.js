@@ -16,16 +16,12 @@ let page = 23;
 let searchQuery = "";
 
 
-prevButton.addEventListener("click", () => {
-  // maxPage
-  console.log("prevButton is clicked");
-  page--;
-  fetchCharacters();
-});
+
 
 searchBar.addEventListener('submit', (e) => {
   e.preventDefault();
   searchQuery = e.target.elements.query.value
+  cardContainer.innerHTML = ""
   fetchCharacters()
 
 
@@ -45,6 +41,7 @@ async function fetchCharacters() {
       pagination.innerHTML = page + "/" + maxPage;
 
       data.results.forEach((element) => {
+        
         const card = createCharacterCard(element);
         cardContainer.append(card);
       });
