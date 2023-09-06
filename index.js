@@ -22,6 +22,11 @@ prevButton.addEventListener("click", () => {
   fetchCharacters();
 });
 
+searchBar.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+})
+
 async function fetchCharacters() {
   try {
     const response = await fetch(
