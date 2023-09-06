@@ -15,6 +15,11 @@ const maxPage = 1;
 const page = 1;
 const searchQuery = "";
 
-createCharacterCard();
-
-cardContainer.append();
+const card = createCharacterCard({
+  imgSrc: "https://rickandmortyapi.com/api/character/avatar/95.jpeg",
+  name: "test",
+  status: "alive",
+  type: "type",
+  occurrences: "45",
+});
+cardContainer.append(card);

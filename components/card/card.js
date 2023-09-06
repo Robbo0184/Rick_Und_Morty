@@ -1,4 +1,10 @@
-export function createCharacterCard() {
+export function createCharacterCard({
+  imgSrc,
+  name,
+  status,
+  type,
+  occurrences,
+}) {
   const listItem = document.createElement("li");
   listItem.classList.add("card");
   listItem.innerHTML += `
@@ -6,7 +12,7 @@ export function createCharacterCard() {
   <img
     class="card__image"
     src=${imgSrc}
-    alt=${imgAlt}
+    alt="alt text"
   />
   <div class="card__image-gradient"></div>
 </div>
