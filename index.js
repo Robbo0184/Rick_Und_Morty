@@ -31,7 +31,6 @@ function searchChar(event) {
   cardContainer.innerHTML = "";
   page = 1;
   fetchCharacters();
-  event.target.elements.query.value = "";
 }
 
 async function fetchCharacters() {
