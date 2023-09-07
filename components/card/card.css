@@ -7,8 +7,6 @@
   padding-left: 1rem;
   
   /* grid-template-rows: 2 1fr; */
-
-
 }
 
 .card {
@@ -20,10 +18,10 @@
   border-radius: 20px;
 }
 
-.card:hover {
+/* .card:hover {
   animation: flip;
   animation-duration: 3s;
-}
+} */
 
 .card__info {
   display: grid;

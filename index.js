@@ -9,7 +9,7 @@ const searchBarContainer = document.querySelector(
 );
 
 const navigation = document.querySelector('[data-js="navigation"]');
-
+const cardElement = document.querySelector(".card");
 
 // States
 let maxPage = 1;
@@ -27,16 +27,14 @@ navigation.append(prevButton, pagination, nextButton);
 function searchChar(event) {
   event.preventDefault();
   searchQuery = event.target.elements.query.value;
-  console.log(searchQuery);
 
   cardContainer.innerHTML = "";
-  page = 1
+  page = 1;
   fetchCharacters();
 }
 
 async function fetchCharacters() {
   try {
-   
     const response = await fetch(
       `https://rickandmortyapi.com/api/character/?page=${page}&name=${searchQuery}`
     );
@@ -63,7 +61,32 @@ async function fetchCharacters() {
       data.results.forEach((element) => {
         const card = createCharacterCard(element);
         cardContainer.append(card);
+        let characterId = element.id;
+
+        card.onclick = () => fetchSingleCharacter(characterId);
       });
+
+      return data;
+    } else {
+      console.error("Bad Response");
+    }
+  } catch (error) {
+    console.error("An Error Occurred", error);
+  }
+}
+
+async function fetchSingleCharacter(characterId) {
+  try {
+    const response = await fetch(
+      `https://rickandmortyapi.com/api/character/${characterId}`
+    );
+
+    if (response.ok) {
+      const data = await response.json();
+
+      cardContainer.innerHTML = "";
+      const singleCardEl = createCharacterCard(data);
+      cardContainer.append(singleCardEl);
 
       return data;
     } else {
