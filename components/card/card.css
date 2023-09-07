@@ -1,7 +1,10 @@
 .card-container {
   margin-bottom: 10px;
   display: grid;
-  grid-template-columns: auto 1fr;
+  /* grid-template-columns: auto 1fr; */
+  gap: 50px;
+  grid-template-columns: repeat(4, 1fr 1fr);
+  grid-template-rows: repeat(4, 1fr);
 }
 .card {
   width: 300px;
