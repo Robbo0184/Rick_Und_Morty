@@ -29,6 +29,7 @@ header {
 body {
   font-family: var(--font-family);
   color: var(--color-primary);
+  background-color: darkseagreen;
   /* padding: 20px; */
   position: relative;
 }
