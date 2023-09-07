@@ -11,7 +11,12 @@
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
     rgba(0, 0, 0, 0.22) 0px 10px 10px;
   border-radius: 20px;
-  transition: opacity 500ms ease-in-out, background-color 500ms ease-in-out;
+  /* transition: opacity 500ms ease-in-out, background-color 500ms ease-in-out; */
+}
+
+.card:hover {
+  animation: flip;
+  animation-duration: 3s;
 }
 
 .card__info {
