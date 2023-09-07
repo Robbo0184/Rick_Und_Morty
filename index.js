@@ -10,11 +10,11 @@ const searchBarContainer = document.querySelector(
 
 const navigation = document.querySelector('[data-js="navigation"]');
 
-
 // States
 let maxPage = 1;
 let page = 1;
 let searchQuery = "";
+let characterId = 1;
 
 searchBarContainer.append(createSearchBar(searchChar));
 
@@ -24,19 +24,30 @@ const nextButton = CreateButton("next");
 const pagination = CreatePagination();
 navigation.append(prevButton, pagination, nextButton);
 
+// const cardElement = createCharacterCard(characterId);
+// document.body.append(cardElement);
+
 function searchChar(event) {
   event.preventDefault();
   searchQuery = event.target.elements.query.value;
   console.log(searchQuery);
 
   cardContainer.innerHTML = "";
-  page = 1
+  page = 1;
   fetchCharacters();
 }
 
+function searchSingleChar(event) {
+  event.preventDefault();
+  // characterId = event.target.elements.query.value;
+  console.log("characterId before ", characterId);
+  characterId = event.target.elements.query.value;
+}
+
+searchSingleChar(characterId);
+
 async function fetchCharacters() {
   try {
-   
     const response = await fetch(
       `https://rickandmortyapi.com/api/character/?page=${page}&name=${searchQuery}`
     );
@@ -74,7 +85,35 @@ async function fetchCharacters() {
   }
 }
 
+async function fetchSingleCharacter() {
+  try {
+    const response = await fetch(
+      `https://rickandmortyapi.com/api/character/${characterId}`
+    );
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log("DATA ", data);
+
+      const card = createCharacterCard(data);
+      cardContainer.append(card);
+
+      card.addEventListener("click", () => {
+        cardContainer.innerHTML = "";
+        fetchSingleCharacter(characterId);
+      });
+
+      return data;
+    } else {
+      console.error("Bad Response");
+    }
+  } catch (error) {
+    console.error("An Error Occurred", error);
+  }
+}
+
 await fetchCharacters();
+await fetchSingleCharacter();
 
 prevButton.addEventListener("click", () => {
   cardContainer.innerHTML = "";
