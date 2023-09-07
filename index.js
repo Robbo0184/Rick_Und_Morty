@@ -22,8 +22,6 @@ searchBarContainer.append(createSearchBar(searchChar));
 
 const prevButton = CreateButton("previous");
 const nextButton = CreateButton("next");
-// navigation.append(prevButton);
-// navigation.append(nextButton);
 
 const pagination = CreatePagination();
 navigation.append(prevButton, pagination, nextButton);
@@ -87,6 +85,5 @@ prevButton.addEventListener("click", () => {
 nextButton.addEventListener("click", () => {
   cardContainer.innerHTML = "";
   page++;
-
   fetchCharacters();
 });
