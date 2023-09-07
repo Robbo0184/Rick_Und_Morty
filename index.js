@@ -9,7 +9,6 @@ const searchBarContainer = document.querySelector(
 );
 
 const navigation = document.querySelector('[data-js="navigation"]');
-const cardElement = document.querySelector(".card");
 
 // States
 let maxPage = 1;
@@ -20,6 +19,7 @@ searchBarContainer.append(createSearchBar(searchChar));
 
 const prevButton = CreateButton("previous");
 const nextButton = CreateButton("next");
+const backToResults = CreateButton("backToResults");
 
 const pagination = CreatePagination();
 navigation.append(prevButton, pagination, nextButton);
@@ -88,6 +88,12 @@ async function fetchSingleCharacter(characterId) {
       const singleCardEl = createCharacterCard(data);
       cardContainer.append(singleCardEl);
 
+      prevButton.hidden = true;
+      nextButton.hidden = true;
+      pagination.innerHTML = "";
+
+      navigation.append(backToResults);
+
       return data;
     } else {
       console.error("Bad Response");
@@ -108,5 +114,11 @@ prevButton.addEventListener("click", () => {
 nextButton.addEventListener("click", () => {
   cardContainer.innerHTML = "";
   page++;
+  fetchCharacters();
+});
+
+backToResults.addEventListener("click", () => {
+  cardContainer.innerHTML = "";
+  page = 1;
   fetchCharacters();
 });
