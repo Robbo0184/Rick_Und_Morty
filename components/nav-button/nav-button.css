@@ -11,4 +11,7 @@
 
 .button:hover {
   background-color: var(--color-secondary);
+  animation: heartBeat;
+  animation-duration: 1s;
+
 }
