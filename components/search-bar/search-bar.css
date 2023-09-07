@@ -1,5 +1,7 @@
 .search-bar-container {
-  width: 300px;
+  /* width: 300px; */
+  width: 100vw;
+  position: relative;
 }
 
 .search-bar {
@@ -13,11 +15,15 @@
   background-color: transparent;
   border: none;
   color: var(--color-primary);
+  max-width: 12vw;
 }
 
 .search-bar__button {
   border: none;
   background-color: transparent;
+  position: absolute;
+  left: 14rem;
+  
 }
 
 .search-bar__input:focus {

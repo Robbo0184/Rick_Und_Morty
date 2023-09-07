@@ -15,11 +15,23 @@
   --font-family: system-ui;
 }
 
+header {
+   position: fixed;
+   z-index: 1;
+   background-color: #f6f6f6;
+   height: 60px
+}
+
+.title{
+  margin-left: 1rem;
+}
+
 body {
   font-family: var(--font-family);
   color: var(--color-primary);
   background-color: darkseagreen;
-  padding: 20px;
+  /* padding: 20px; */
+  position: relative;
 }
 
 main {
