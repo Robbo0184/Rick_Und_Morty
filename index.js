@@ -9,7 +9,7 @@ const searchBarContainer = document.querySelector(
 );
 
 const navigation = document.querySelector('[data-js="navigation"]');
-const input = document.querySelector('.search-bar__input')
+const input = document.querySelector(".search-bar__input");
 // States
 let maxPage = 1;
 let page = 1;
@@ -29,10 +29,10 @@ function searchChar(event) {
   searchQuery = event.target.elements.query.value;
 
   cardContainer.innerHTML = "";
-  
+
   page = 1;
-  fetchCharacters(); 
-  event.target.elements.query.value = ""
+  fetchCharacters();
+  event.target.elements.query.value = "";
 }
 
 async function fetchCharacters() {
@@ -43,7 +43,7 @@ async function fetchCharacters() {
 
     if (response.ok) {
       const data = await response.json();
-      console.log("DATA ", data);
+      // console.log("DATA ", data);
 
       maxPage = data.info.pages;
       if (page === maxPage) {
@@ -67,8 +67,17 @@ async function fetchCharacters() {
 
         card.onclick = () => fetchSingleCharacter(characterId);
       });
-
       return data;
+    } else if (!response.ok) {
+      Toastify({
+        text: "No matching results found",
+        className: "error",
+        style: {
+          background: "linear-gradient(to right, #ff5f6d, #ffc371)",
+          height: "50px",
+          width: "50%",
+        },
+      }).showToast();
     } else {
       console.error("Bad Response");
     }
