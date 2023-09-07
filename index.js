@@ -1,8 +1,7 @@
 import { createCharacterCard } from "./components/card/card.js";
-
-import { createSearchBar } from './components/search-bar/search-bar.js'
+import { createSearchBar } from "./components/search-bar/search-bar.js";
 import { CreateButton } from "./components/nav-button/nav-button.js";
-
+import { CreatePagination } from "./components/nav-pagination/nav-pagination.js";
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
@@ -12,23 +11,22 @@ const searchBarContainer = document.querySelector(
 const navigation = document.querySelector('[data-js="navigation"]');
 // const prevButton = document.querySelector('[data-js="button-prev"]');
 // const nextButton = document.querySelector('[data-js="button-next"]');
-const pagination = document.querySelector('[data-js="pagination"]');
+// const pagination = document.querySelector('[data-js="pagination"]');
 
 // States
 let maxPage = 1;
 let page = 1;
 let searchQuery = "";
 
-
-searchBarContainer.append(createSearchBar(searchChar))
-
-
+searchBarContainer.append(createSearchBar(searchChar));
 
 const prevButton = CreateButton("previous");
 const nextButton = CreateButton("next");
-navigation.append(prevButton);
-navigation.append(nextButton);
+// navigation.append(prevButton);
+// navigation.append(nextButton);
 
+const pagination = CreatePagination();
+navigation.append(prevButton, pagination, nextButton);
 
 function searchChar(event) {
   event.preventDefault();
