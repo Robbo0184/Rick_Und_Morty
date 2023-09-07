@@ -44,3 +44,14 @@ main {
 .title {
   padding: 10px 0;
 }
+
+@media screen and (max-width: 1300px) {
+   .card-container {
+    grid-template-columns: repeat(2, 0.2fr);
+    column-gap: 1ch;
+   }
+
+   .card{
+    width: 150px
+   }
+}

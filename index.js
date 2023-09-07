@@ -9,7 +9,7 @@ const searchBarContainer = document.querySelector(
 );
 
 const navigation = document.querySelector('[data-js="navigation"]');
-
+const input = document.querySelector('.search-bar__input')
 // States
 let maxPage = 1;
 let page = 1;
@@ -29,8 +29,10 @@ function searchChar(event) {
   searchQuery = event.target.elements.query.value;
 
   cardContainer.innerHTML = "";
+  
   page = 1;
-  fetchCharacters();
+  fetchCharacters(); 
+  event.target.elements.query.value = ""
 }
 
 async function fetchCharacters() {
