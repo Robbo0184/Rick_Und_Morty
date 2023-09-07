@@ -31,6 +31,7 @@ function searchChar(event) {
   cardContainer.innerHTML = "";
   page = 1;
   fetchCharacters();
+  event.target.elements.query.value = "";
 }
 
 async function fetchCharacters() {
@@ -93,6 +94,7 @@ async function fetchSingleCharacter(characterId) {
       pagination.innerHTML = "";
 
       navigation.append(backToResults);
+      backToResults.hidden = false;
 
       return data;
     } else {
@@ -119,6 +121,9 @@ nextButton.addEventListener("click", () => {
 
 backToResults.addEventListener("click", () => {
   cardContainer.innerHTML = "";
-  page = 1;
+  // page = 1;
   fetchCharacters();
+  backToResults.hidden = true;
+  prevButton.hidden = false;
+  nextButton.hidden = false;
 });
