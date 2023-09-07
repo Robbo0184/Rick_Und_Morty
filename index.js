@@ -70,12 +70,12 @@ async function fetchCharacters() {
       return data;
     } else if (!response.ok) {
       Toastify({
-        text: "No matches",
-        // className: "info",
+        text: "No matching results found",
         className: "error",
         style: {
-          // background: "linear-gradient(to right, #00b09b, #96c93d)",
-          backgroundColor: "red",
+          background: "linear-gradient(to right, #ff5f6d, #ffc371)",
+          height: "50px",
+          width: "50%",
         },
       }).showToast();
     } else {
