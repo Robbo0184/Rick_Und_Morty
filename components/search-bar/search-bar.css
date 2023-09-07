@@ -2,20 +2,26 @@
   /* width: 300px; */
   width: 100vw;
   position: relative;
+  
 }
 
 .search-bar {
   padding: 10px 20px;
-  background-color: var(--color-secondary);
+  /* background-color: var(--color-secondary); */
+  background-color: rgb(220, 220, 220);
   display: grid;
   grid-template-columns: 1fr 24px;
+  
 }
 
 .search-bar__input {
-  background-color: transparent;
+  /* background-color: transparent; */
+  background-color: rgb(255, 255, 255);
   border: none;
   color: var(--color-primary);
   max-width: 12vw;
+  min-height: 3vh;
+
 }
 
 .search-bar__button {
