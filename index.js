@@ -69,9 +69,12 @@ async function fetchCharacters() {
       });
 
       return data;
-    } else {
-      console.error("Bad Response");
-    }
+    } 
+    
+     else {
+     console.error("Bad Response");
+      
+    } 
   } catch (error) {
     console.error("An Error Occurred", error);
   }
