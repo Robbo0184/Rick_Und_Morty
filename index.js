@@ -9,12 +9,12 @@ const searchBarContainer = document.querySelector(
 );
 
 const navigation = document.querySelector('[data-js="navigation"]');
+const cardElement = document.querySelector(".card");
 
 // States
 let maxPage = 1;
 let page = 1;
 let searchQuery = "";
-let characterId = 1;
 
 searchBarContainer.append(createSearchBar(searchChar));
 
@@ -24,13 +24,9 @@ const nextButton = CreateButton("next");
 const pagination = CreatePagination();
 navigation.append(prevButton, pagination, nextButton);
 
-// const cardElement = createCharacterCard(characterId);
-// document.body.append(cardElement);
-
 function searchChar(event) {
   event.preventDefault();
   searchQuery = event.target.elements.query.value;
-  console.log(searchQuery);
 
   cardContainer.innerHTML = "";
   page = 1;
@@ -65,6 +61,9 @@ async function fetchCharacters() {
       data.results.forEach((element) => {
         const card = createCharacterCard(element);
         cardContainer.append(card);
+        let characterId = element.id;
+
+        card.onclick = () => fetchSingleCharacter(characterId);
       });
 
       return data;
@@ -76,7 +75,7 @@ async function fetchCharacters() {
   }
 }
 
-async function fetchSingleCharacter() {
+async function fetchSingleCharacter(characterId) {
   try {
     const response = await fetch(
       `https://rickandmortyapi.com/api/character/${characterId}`
@@ -84,15 +83,10 @@ async function fetchSingleCharacter() {
 
     if (response.ok) {
       const data = await response.json();
-      console.log("DATA ", data);
 
-      const card = createCharacterCard(data);
-      cardContainer.append(card);
-
-      card.addEventListener("click", () => {
-        cardContainer.innerHTML = "";
-        fetchSingleCharacter(characterId);
-      });
+      cardContainer.innerHTML = "";
+      const singleCardEl = createCharacterCard(data);
+      cardContainer.append(singleCardEl);
 
       return data;
     } else {
@@ -104,7 +98,6 @@ async function fetchSingleCharacter() {
 }
 
 await fetchCharacters();
-await fetchSingleCharacter();
 
 prevButton.addEventListener("click", () => {
   cardContainer.innerHTML = "";
