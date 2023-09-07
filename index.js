@@ -37,15 +37,6 @@ function searchChar(event) {
   fetchCharacters();
 }
 
-function searchSingleChar(event) {
-  event.preventDefault();
-  // characterId = event.target.elements.query.value;
-  console.log("characterId before ", characterId);
-  characterId = event.target.elements.query.value;
-}
-
-searchSingleChar(characterId);
-
 async function fetchCharacters() {
   try {
     const response = await fetch(
