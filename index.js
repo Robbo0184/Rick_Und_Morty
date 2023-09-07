@@ -2,7 +2,7 @@ import { createCharacterCard } from "./components/card/card.js";
 import { createSearchBar } from "./components/search-bar/search-bar.js";
 import { CreateButton } from "./components/nav-button/nav-button.js";
 import { CreatePagination } from "./components/nav-pagination/nav-pagination.js";
-import { notFound } from "./components/not-found/not-found.js";
+
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
@@ -25,7 +25,7 @@ const backToResults = CreateButton("backToResults");
 const pagination = CreatePagination();
 navigation.append(prevButton, pagination, nextButton);
 
-const notFoundPage = notFound()
+
 
 
 function searchChar(event) {
@@ -74,7 +74,10 @@ async function fetchCharacters() {
       });
       return data;
     } else if (!response.ok) {
-      document.body.append(notFoundPage)
+      // navigation.innerHTML = ""
+      // document.body.append(notFoundPage)
+      cardContainer.textContent = 'Request not found.....'
+      
       Toastify({
         text: "No matching results found",
         className: "error",
