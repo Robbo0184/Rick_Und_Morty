@@ -1,6 +1,6 @@
 .search-bar-container {
-  /* width: 300px; */
   width: 100vw;
+  position: relative;
 }
 
 .search-bar {
@@ -19,21 +19,19 @@
   font-size: 20px;
   outline: none;
   transition: 0.5s;
-  position: relative;
 }
 
 .search-bar__button {
   border: none;
   background-color: transparent;
-  left: 12rem;
-  top: 1rem;
+  left: 16rem;
+  top: 2.5rem;
+  position: absolute;
 }
-
 .search-bar__input:focus {
   outline: none;
 }
 
 .search-bar__icon {
   width: 20px;
-  /* position: absolute; */
 }
